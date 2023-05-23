@@ -43,7 +43,7 @@
 		</property>	
 	</bean>
 	
-	    <!-- Define the UserRepo bean -->
+	 <!-- Define the UserRepo bean -->
     <bean class="loggy.repository.UserRepo" name="userRepo">
         <constructor-arg ref="jdbcTemplate" />
     </bean>
@@ -55,6 +55,14 @@
 	</bean>
 
 	<!-- Database Configuration -->
+
+
+	<!-- Multipart File Handle -->	
+	<!-- Configure Spring MVC to use the Apache Commons FileUpload API. -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
 
 
 </beans>

@@ -1,5 +1,8 @@
 package loggy.servicesImple;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import loggy.entities.User;
@@ -37,6 +40,39 @@ public class UserServicesImple implements UserServices {
 	public User getUserById() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	
+	//user Validation
+	public List<String> userValidation(User user) {
+		
+		List<String> error = new ArrayList<String>();
+		
+		//name validation
+		if(user.getName().isBlank()) {
+			error.add("Please Enter the name");			
+		}else {
+			if(user.getName().length() < 3) {
+				error.add("Name should be more than 3 char");	
+			}
+		}
+		
+		//email validation
+		if(user.getEmail().isBlank()) {
+			error.add("Please Enter the Email");		
+		}
+		
+		
+		if(user.getPassword().isBlank()) {
+			error.add("Enter Password");
+		}else {
+			if(user.getPassword().length() <= 3) {
+				error.add("Password need minimum 4 char");	
+			}
+		}
+		
+		return error;
 	}
 
 }

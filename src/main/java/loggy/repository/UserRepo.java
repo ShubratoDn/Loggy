@@ -1,16 +1,31 @@
 package loggy.repository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-public class UserRepo {	
+import loggy.entities.User;
+
+@Repository
+public class UserRepo {		
+
 	private  JdbcTemplate jdbcTemplate;
 	
-	public int addUser() {
-		String sql = "INSERT INTO user (name, email) VALUES (?, ?) 	";
-		
-		int update = jdbcTemplate.update(sql, "Shubrato", "test");
-		System.out.println("User inserted");
-		return 0;
+	@Autowired
+    public UserRepo(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+	
+	
+	
+	//add User
+	public int addUser(User user) {		
+		String sql = "INSERT INTO user (name, email, password, image) VALUES (?, ?, ?,?)";		
+		int update = jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), user.getImage());
+		return update;
 	}
+	
+	
+	
 	
 }

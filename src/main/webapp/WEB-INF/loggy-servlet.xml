@@ -42,6 +42,17 @@
 			<ref bean="myDataSource"/>
 		</property>	
 	</bean>
+	
+	    <!-- Define the UserRepo bean -->
+    <bean class="loggy.repository.UserRepo" name="userRepo">
+        <constructor-arg ref="jdbcTemplate" />
+    </bean>
+    
+    <!-- UserServices bean definition -->
+	<bean id="userServices" class="loggy.servicesImple.UserServicesImple">
+	    <!-- Inject the UserRepo bean -->
+	    <constructor-arg ref="userRepo" />
+	</bean>
 
 	<!-- Database Configuration -->
 

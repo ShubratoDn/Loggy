@@ -1,0 +1,91 @@
+body{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+
+
+
+/* nav bar design */
+nav{
+    min-height: 100vh;
+}
+.side-navbar{
+    position: fixed;
+    display: block;
+}
+
+.nav-links{
+    /* background-color: red; */
+    padding-left: 0;
+}
+
+.nav-links .nav-link{    
+    transition: all .5s;
+}
+
+.nav-links .nav-link:hover{
+    background-color: rgba(84, 218, 44, 0.075);    
+}
+
+.nav-links .nav-link a{
+    font-size: 20px;
+    color: black;
+}
+
+.nav-icon{
+    padding-right:20px ;
+}
+
+
+
+
+
+/* BODY STYLE */
+.body-nav{
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    font-weight: bold;
+}
+
+.content-owner-image{
+    height: 70px;
+    width: 70px;
+    border-radius:50% ;
+    object-fit: cover;
+}
+
+
+.content-header-info{
+    /* border: 1px solid rgb(216, 215, 215); */
+    border-radius: 10px;
+}
+
+.content-box{
+    padding: 10px;
+    border: 1px solid rgba(169, 211, 160, 0.829);
+    margin: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+.content-interaction{
+    border: 1px solid rgb(201, 199, 199);
+    padding: 10px;   
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.content-interaction button,
+.content-interaction a{
+    border: none;
+    background-color:transparent;   
+    color: black; 
+    padding: 10px 20px;    
+}
+
+.content-interaction button:hover,
+.content-interaction a:hover{
+    background-color: rgb(176, 193, 209);
+    text-decoration-line: none;
+    border-radius: 10px;
+}

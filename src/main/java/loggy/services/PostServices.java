@@ -1,5 +1,9 @@
 package loggy.services;
 
-public class PostServices {
+import loggy.entities.Post;
 
+public interface PostServices {
+
+	int addPost(Post post, int userId);
+	
 }

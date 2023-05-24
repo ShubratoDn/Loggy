@@ -55,6 +55,17 @@
 	</bean>
 
 
+
+	 <!-- Define the UserRepo bean -->
+    <bean class="loggy.repository.PostRepo" name="postRepo">
+        <constructor-arg ref="jdbcTemplate" />
+    </bean>
+    <!-- UserServices bean definition -->
+	<bean id="postServices" class="loggy.servicesImple.PostServicesImple">
+	    <!-- Inject the UserRepo bean -->
+	    <constructor-arg ref="postRepo" />
+	</bean>
+
 	<!-- Database Configuration -->
 
 	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>

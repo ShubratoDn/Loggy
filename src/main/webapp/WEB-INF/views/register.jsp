@@ -19,15 +19,22 @@
 	<main class="login-page w-100">
 		<form action="register" enctype="multipart/form-data" method="post" class="col-lg-5 border m-auto py-4">
 			<h2 class="text-center">Register to Loggy</h2>
+			<br>
 
 			<!-- Showing Error MEssage -->
 			<%
 			if (request.getAttribute("serverMsg") != null) {
 				ServerMessage sm = (ServerMessage) request.getAttribute("serverMsg");
-				if (sm != null) {
+				if (sm.getMessage() != null) {
 			%>
 			<div class="alert <%=sm.getCss()%>" role="alert">
-				<%=sm.getMessage()%>
+				<%
+					for(String msg : sm.getMessage()){
+						%>
+							<li class="m-0"><%= msg %></li>
+						<%
+					}
+				%>
 			</div>
 			<%
 			}
@@ -45,7 +52,7 @@
 			</div>
 			<div class="form-group">
 				<input type="password" name="password" class="form-control"
-					placeholder="Enter password" id="pwd">
+					placeholder="Enter password" id="pwd" value="${password}">
 			</div>
 
 			<div class="form-group">
@@ -53,9 +60,7 @@
 					name="user_image" class="form-control" placeholder="Enter password"
 					id="img">
 			</div>
-			<button type="submit" class="btn w-100 btn-primary">Register
-				Now</button>
-			<input type="submit">
+			<input type="submit" class="btn w-100 btn-primary" value="Register Now">
 		</form>
 	</main>
 

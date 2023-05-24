@@ -54,10 +54,7 @@
 	    <constructor-arg ref="userRepo" />
 	</bean>
 
-	<bean id="fileServices" class="loggy.servicesImple.FileServicesImple">
-	    <!-- Inject the UserRepo bean -->
-	    <constructor-arg ref="userRepo" />
-	</bean>
+
 	<!-- Database Configuration -->
 
 	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.remoting.soap.SoapFaultException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -51,9 +52,14 @@ public class PostController {
 			return "home";
 		}		
 		
-		//file validation
+		//file validation		
 		FileServices fileServices = new FileServices();
-		String postFileType = fileServices.postFileType(file);
+		
+		//getting file type
+		String postFileType = "empty" ;
+		if(!file.isEmpty()) {			
+			postFileType = fileServices.postFileType(file);
+		}
 		
 		//image validation
 		if(postFileType.equals("image")) {
@@ -71,6 +77,8 @@ public class PostController {
 				model.addAttribute("postMsg", sm);
 				return "home";
 			}
+		}else if(postFileType.equals("empty")) {
+			
 		}else {
 			sm = new ServerMessage(Arrays.asList("Invalid file type"),"error","alert-danger");
 			model.addAttribute("postMsg", sm);
@@ -79,13 +87,22 @@ public class PostController {
 		
 		
 		
+		//upload the file
+		String filePath = "";
+		if(postFileType.equals("image") || postFileType.equals("video")) {
+			 filePath = fileServices.uploadPostFile(file, session);
+		}	
+		
+		
+		
+		
 		//Inserting data to Database
-		post.getPostMultimedia().setMedia_type(postFileType);
-		post.getPostMultimedia().setPath(postFileType);
-		
-//		postServices.addPost(post, 1);
-
-		
+		post.setUser(user);		
+		postServices.addPost(post, user.getId());		
+		//uploading multimedia data if available
+		if(postFileType.equals("image") || postFileType.equals("video")) {
+			postServices.addPostMultimedia(post, user.getId(), postFileType, filePath);			
+		}	
 		
 		System.out.println(post);
 		

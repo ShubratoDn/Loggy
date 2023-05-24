@@ -76,14 +76,11 @@ public class FileServices {
 	public String postFileType(CommonsMultipartFile file) {
 		
 		String type = "";
-		System.out.println("wroking 0");
 		if(file.getContentType().equalsIgnoreCase("image/jpeg") || file.getContentType().equalsIgnoreCase("image/png")) {
 			type = "image";
 		}else if(file.getContentType().equalsIgnoreCase("video/mp4") || file.getContentType().equalsIgnoreCase("video/x-msvideo")) {
 			type = "video";
 		}
-		
-		System.out.println("FILE TYPE IS " + file.getContentType());
 		
 		return type;
 	}
@@ -93,7 +90,7 @@ public class FileServices {
 	//post image validation
 	public List<String> postImageValidation(CommonsMultipartFile image) {		
 		List<String> error = new ArrayList<String>();		
-		if(image.getSize() > 5000000 /*5 Mb*/) {
+		if(image.getSize() > 5000000 /*5 Mb*/ && image.getSize() > 100) {
 			error.add("Image size should under 5 Mb");
 		}		
 		return error;
@@ -106,13 +103,43 @@ public class FileServices {
 			error.add("Video size should under 30 Mb");
 		}		
 		return error;
-	}
+	}	
+	
+
 	
 	
 	
 
-	public String uploadPostFile(CommonsMultipartFile image) {
-		// TODO Auto-generated method stub
-		return null;
+	//UPLOAD POST FILE
+	public String uploadPostFile(CommonsMultipartFile file, HttpSession session) {
+		
+		SecureRandom random = new SecureRandom();
+        byte[] randomBytes = new byte[10];
+        random.nextBytes(randomBytes);
+
+        StringBuilder sb = new StringBuilder();
+        for (byte b : randomBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        String randomHexCode = sb.toString();
+//		GENERATING RANDOM TEXT ENDS
+		
+		
+        String file_name = ""+randomHexCode+file.getOriginalFilename();
+		
+		byte[] data = file.getBytes();
+		
+		String path = session.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"post_files"+File.separator+file_name;
+		System.out.println(path);
+		
+		try {
+			FileOutputStream fos = new FileOutputStream(file_name);
+			fos.write(data);
+			fos.close();
+		}catch (Exception e) {
+			System.out.println("Post file upload failed");
+			return null;
+		}		
+		return file_name;
 	}
 }

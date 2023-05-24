@@ -45,6 +45,15 @@ public class PostServicesImple implements PostServices{
 		int addPost = this.postRepo.addPost(post, userId);
 		return addPost;
 	}
+	
+	public int addPostMultimedia(Post post, int userId, String fileType, String filePath) {
+		int addPostMultimedia = this.postRepo.addPostMultimedia(post, userId, fileType, filePath);
+		return addPostMultimedia;
+	}
+
+
+
+
 
 
 

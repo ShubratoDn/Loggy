@@ -1,15 +1,12 @@
 package loggy.repository;
 
-import java.sql.PreparedStatement;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 
 import loggy.entities.Post;
+import loggy.entities.User;
 
 @Repository
 public class PostRepo {
@@ -20,29 +17,37 @@ public class PostRepo {
         this.jdbcTemplate = jdbcTemplate;
     }	
 	
+	
 	public int addPost(Post post, int user_id) {
 		String sql = "INSERT INTO post (user_id, title, content) VALUES (?, ?, ?)";		
-		int addedPost = jdbcTemplate.update(sql, user_id, post.getTitle(), post.getContent());
+		int affectedRow = jdbcTemplate.update(sql, user_id, post.getTitle(), post.getContent());
+		
 		System.out.println("Post added");
-		return addedPost;
+		return affectedRow;
+	}	
+	
+	
+	//multimedia data insert
+	public int addPostMultimedia(Post post, int user_id, String fileType, String filePath) {		
+		
+		Post uploadedPost = null;		
+		String sql = "SELECT * FROM post WHERE user_id=? AND title=? ";		
+		RowMapper<Post> rowMapper = new PostRowMapperImple();		
+		try {			
+			uploadedPost = this.jdbcTemplate.queryForObject(sql, rowMapper, user_id, post.getTitle());
+		} catch (Exception e) {
+			System.out.println(e);
+			uploadedPost = null;
+		}
+		
+		
+		String sql2 = "INSERT INTO post_multimedia (post_id, media_type, path) VALUES (?, ?, ?)";	
+		int affectedRow = jdbcTemplate.update(sql2, uploadedPost.getId(), fileType, filePath);		
+		
+		System.out.println("Post Multimedia Inserted");
+		return 0;
 	}
 	
-	
-	public Long save(Post post) {
-		
-        String sql = "INSERT INTO post (title, content) VALUES (?, ?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update( connection -> {
-                PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
-                ps.setString(1, post.getTitle());
-                ps.setString(2, post.getContent());
-                return ps;
-            },
-            keyHolder
-        );
-
-        return keyHolder.getKey().longValue();
-    }
 	
 	
 	

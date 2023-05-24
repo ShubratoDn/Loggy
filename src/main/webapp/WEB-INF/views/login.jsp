@@ -59,12 +59,16 @@
 				<label for="pwd">Password:</label> <input name="password" type="password"
 					class="form-control" placeholder="Enter password" id="pwd">
 			</div>
-			<div class="form-group form-check">
-				<label class="form-check-label"> 
-				<input
-					name="password"
-					class="form-check-input" type="checkbox"> Remember me
-				</label>
+			
+			<div class="d-flex justify-content-between">
+				<div class="form-group form-check">
+					<label class="form-check-label"> <input name="password"
+						class="form-check-input" type="checkbox"> Remember me
+					</label>
+				</div>
+				
+				<span><a href="register">Register to loggy</a></span>
+
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
 		</form>

@@ -6,8 +6,8 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>This is Home!</h1>
-    <img alt="bunny hop image"  src="<c:url value="files/myImage.png" />" />
-    <input type = "button" value="Click to Test Js File" onclick = "testing();" />
+	
+	<%response.sendRedirect("home"); %>
+	
 </body>
 </html>

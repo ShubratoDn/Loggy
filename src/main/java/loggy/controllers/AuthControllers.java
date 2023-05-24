@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import loggy.entities.User;
 import loggy.helpers.FileServices;
@@ -42,7 +43,7 @@ public class AuthControllers {
 	
 	//login user
 	@PostMapping("/login")
-	public String login(@ModelAttribute User user, Model model, HttpSession session) {
+	public String login(@ModelAttribute User user, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
 		
 		ServerMessage sm = new ServerMessage();
 		
@@ -67,6 +68,8 @@ public class AuthControllers {
 		model.addAttribute("serverMsg", sm);
 		System.out.println("Logged In");
 		
+		//flusing the url, now email will not appear in the URL after redirecting
+		redirectAttributes.addFlashAttribute("email", user.getEmail());
 		return "redirect:/home";
 	}
 	
@@ -146,7 +149,16 @@ public class AuthControllers {
 			model.addAttribute("serverMsg", sm);
 		}
 
-		return "register";
+		return "redirect:/login";
 	}
+	
+	
+	//logout
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "login";
+	}
+	
 	
 }

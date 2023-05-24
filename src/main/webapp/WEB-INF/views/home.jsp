@@ -1,8 +1,16 @@
 
+<%@page import="loggy.entities.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
 <%@ page isELIgnored="false"%>
+
+<%
+	User loggedUser = null; 
+	if(session.getAttribute("user") != null){
+		loggedUser = (User) session.getAttribute("user");
+	}
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +26,18 @@
 
 <body class="row">
 
-	<%@include file="partials/left_sidenav.jsp"%>
+		<%
+			if(loggedUser != null){
+			%>
+				<%@include file="partials/left_sidenav_after_log.jsp"%>
+			<%				
+			}else{
+			%>
+				<%@include file="partials/left_sidenav_before_log.jsp"%>
+			<%
+			}
+		%>
+	
 
 	<main class="offset-lg-3 col-lg-6">
 		<div class="body-nav">Explore</div>
@@ -99,12 +118,18 @@
 	</main>
 
 
-	<div class="side-right col-lg-3 pb-5 border">
-		<div class="mt-5">
-			<span>New in Loggy? </span> <br> <a href="login">Login here</a>
-		</div>
-	</div>
-
+	<!-- Right Side Nav -->
+		<%
+			if(loggedUser != null){
+			%>
+				<%@include file="partials/rightside_after_log.jsp"%>
+			<%				
+			}else{
+			%>
+				<%@include file="partials/rightside_before_log.jsp"%>
+			<%
+			}
+		%>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>

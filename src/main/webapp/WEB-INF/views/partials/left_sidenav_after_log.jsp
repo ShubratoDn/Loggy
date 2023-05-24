@@ -1,7 +1,5 @@
 <%@page import="loggy.entities.User"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+
     <%
     User user = new User(); 
 	if(session.getAttribute("user") != null){
@@ -16,10 +14,10 @@
 
         <ul class="nav-links">
             <li class="nav-link">
-                <a href="#"><i class="fa-solid fa-house nav-icon"></i><span>Home</span></a>
+                <a href="home"><i class="fa-solid fa-house nav-icon"></i><span>Home</span></a>
             </li>
             <li class="nav-link">
-                <a href="#"> <img class="user_image_nav" alt="user" src="resources/image/userImages/<%=user.getImage() %>"> <span><%=user.getName() %></span></a>
+                <a href="profile"> <img class="user_image_nav" alt="user" src="resources/image/userImages/<%=user.getImage() %>"> <span><%=user.getName() %></span></a>
             </li>  
             <li class="nav-link">
                 <a href="#"><i class="fa-solid fa-gear nav-icon"></i><span>Settings</span></a>

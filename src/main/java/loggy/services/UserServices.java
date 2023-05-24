@@ -12,6 +12,6 @@ public interface UserServices {
 	User getUserByEmail(String email);	
 	int updateUser();
 	int removeUser();
-	User getUserById();
+	User getUserById(int userId);
 	
 }

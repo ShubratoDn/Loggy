@@ -42,5 +42,19 @@ public class UserRepo {
 	}
 	
 	
+	public User getUserById(int id) {		
+		String sql = "select * from user where id=?";		
+		RowMapper<User> rowMapper = new UserRowMapperImple();
+		
+		try {
+			User user = this.jdbcTemplate.queryForObject(sql,rowMapper,id);
+			return user;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+	
+	
 	
 }

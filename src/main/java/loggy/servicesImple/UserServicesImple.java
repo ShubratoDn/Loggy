@@ -37,10 +37,13 @@ public class UserServicesImple implements UserServices {
 		return 0;
 	}
 
-	public User getUserById() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public User getUserById(int userId) {
+		User user = userRepo.getUserById(userId);
+		return user;
 	}
+
+
 	
 	public User getUserByEmail(String email) {
 		User user = userRepo.getUserByEmail(email);
@@ -78,6 +81,9 @@ public class UserServicesImple implements UserServices {
 		
 		return error;
 	}
+
+
+
 
 
 

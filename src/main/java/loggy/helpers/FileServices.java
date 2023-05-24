@@ -72,14 +72,14 @@ public class FileServices {
 	
 	
 	
-
+	//get the file type
 	public String postFileType(CommonsMultipartFile file) {
 		
 		String type = "";
-		
-		if(file.getContentType().equalsIgnoreCase("image/jpeg") && file.getContentType().equalsIgnoreCase("image/png")) {
+		System.out.println("wroking 0");
+		if(file.getContentType().equalsIgnoreCase("image/jpeg") || file.getContentType().equalsIgnoreCase("image/png")) {
 			type = "image";
-		}else if(file.getContentType().equalsIgnoreCase("video/mp4") && file.getContentType().equalsIgnoreCase("video/x-msvideo")) {
+		}else if(file.getContentType().equalsIgnoreCase("video/mp4") || file.getContentType().equalsIgnoreCase("video/x-msvideo")) {
 			type = "video";
 		}
 		
@@ -90,7 +90,23 @@ public class FileServices {
 	
 	
 	
+	//post image validation
+	public List<String> postImageValidation(CommonsMultipartFile image) {		
+		List<String> error = new ArrayList<String>();		
+		if(image.getSize() > 5000000 /*5 Mb*/) {
+			error.add("Image size should under 5 Mb");
+		}		
+		return error;
+	}
 	
+	
+	public List<String> postVideoValidation(CommonsMultipartFile video) {		
+		List<String> error = new ArrayList<String>();		
+		if(video.getSize() > 30000000 /*10 Mb*/) {
+			error.add("Video size should under 30 Mb");
+		}		
+		return error;
+	}
 	
 	
 	

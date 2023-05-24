@@ -25,12 +25,15 @@ public class PostServicesImple implements PostServices{
 	public List<String> postValidation(Post post) {
 
 		List<String> error = new ArrayList<String>();
-		
-		if(post.getTitle().length() > 60) {
+		if(post.getTitle().isEmpty()) {
+			error.add("Title Can not be null");
+		}else if(post.getTitle().length() > 60) {
 			error.add("Title should not exceed 60 character");
 		}
 		
-		if(post.getContent().length() > 120) {
+		if(post.getContent().isEmpty()) {
+			error.add("Content Can not be null");
+		}else if(post.getContent().length() > 120) {
 			error.add("Content should not exceed 120 character");
 		}
 			

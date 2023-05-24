@@ -48,18 +48,44 @@ public class PostController {
 		if(!postValidation.isEmpty()) {
 			sm = new ServerMessage(postValidation,"error","alert-danger");
 			model.addAttribute("postMsg", sm);
-			System.out.println(postValidation);
 			return "home";
 		}		
 		
 		//file validation
 		FileServices fileServices = new FileServices();
 		String postFileType = fileServices.postFileType(file);
-		System.out.println("Post File type" + postFileType);
 		
+		//image validation
+		if(postFileType.equals("image")) {
+			List<String> postImageValidation = fileServices.postImageValidation(file);
+			if(!postImageValidation.isEmpty()) {
+				sm = new ServerMessage(postImageValidation,"error","alert-danger");
+				model.addAttribute("postMsg", sm);
+				return "home";
+			}	
+		}else if(postFileType.equals("video")) {
+			//Video validation
+			 List<String> postVideoValidation = fileServices.postVideoValidation(file);
+			if(!postVideoValidation.isEmpty()) {
+				sm = new ServerMessage(postVideoValidation,"error","alert-danger");
+				model.addAttribute("postMsg", sm);
+				return "home";
+			}
+		}else {
+			sm = new ServerMessage(Arrays.asList("Invalid file type"),"error","alert-danger");
+			model.addAttribute("postMsg", sm);
+			return "home";
+		}
+		
+		
+		
+		//Inserting data to Database
+		post.getPostMultimedia().setMedia_type(postFileType);
+		post.getPostMultimedia().setPath(postFileType);
 		
 //		postServices.addPost(post, 1);
 
+		
 		
 		System.out.println(post);
 		

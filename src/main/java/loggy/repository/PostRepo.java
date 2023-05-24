@@ -1,8 +1,13 @@
 package loggy.repository;
 
+import java.sql.PreparedStatement;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import loggy.entities.Post;
 
@@ -22,6 +27,22 @@ public class PostRepo {
 		return addedPost;
 	}
 	
+	
+	public Long save(Post post) {
+		
+        String sql = "INSERT INTO post (title, content) VALUES (?, ?)";
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update( connection -> {
+                PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
+                ps.setString(1, post.getTitle());
+                ps.setString(2, post.getContent());
+                return ps;
+            },
+            keyHolder
+        );
+
+        return keyHolder.getKey().longValue();
+    }
 	
 	
 	

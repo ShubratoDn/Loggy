@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.remoting.soap.SoapFaultException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -104,9 +103,13 @@ public class PostController {
 			postServices.addPostMultimedia(post, user.getId(), postFileType, filePath);			
 		}	
 		
-		System.out.println(post);
 		
-		return "home";		
+		
+		System.out.println(post);	
+		model.addAttribute("title", "");
+		model.addAttribute("content","");		
+		
+		return "redirect:/home";		
 	}
 	
 }

@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import loggy.entities.Post;
-import loggy.entities.User;
 
 @Repository
 public class PostRepo {
@@ -45,7 +44,7 @@ public class PostRepo {
 		int affectedRow = jdbcTemplate.update(sql2, uploadedPost.getId(), fileType, filePath);		
 		
 		System.out.println("Post Multimedia Inserted");
-		return 0;
+		return affectedRow;
 	}
 	
 	

@@ -133,11 +133,11 @@ public class FileServices {
 		System.out.println(path);
 		
 		try {
-			FileOutputStream fos = new FileOutputStream(file_name);
+			FileOutputStream fos = new FileOutputStream(path);
 			fos.write(data);
 			fos.close();
 		}catch (Exception e) {
-			System.out.println("Post file upload failed");
+			System.out.println("Post file upload failed" + e);
 			return null;
 		}		
 		return file_name;

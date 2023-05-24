@@ -26,10 +26,6 @@ public class FileServices {
 		return error;
 	}
 
-	public List<String> blogMultiMediaValidation(CommonsMultipartFile image) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	//uploading user image
@@ -65,6 +61,36 @@ public class FileServices {
 		}		
 		return file_name;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public String postFileType(CommonsMultipartFile file) {
+		
+		String type = "";
+		
+		if(file.getContentType().equalsIgnoreCase("image/jpeg") && file.getContentType().equalsIgnoreCase("image/png")) {
+			type = "image";
+		}else if(file.getContentType().equalsIgnoreCase("video/mp4") && file.getContentType().equalsIgnoreCase("video/x-msvideo")) {
+			type = "video";
+		}
+		
+		System.out.println("FILE TYPE IS " + file.getContentType());
+		
+		return type;
+	}
+	
+	
+	
+	
 	
 	
 	

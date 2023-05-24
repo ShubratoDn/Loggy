@@ -8,23 +8,48 @@ public class Post {
 	private String title;
 	private String content;
 	private Date upload_date;
+	private PostMultimedia postMultimedia;
+	private User user;
 	
-	
+	public Post(int id, String title, String content, Date upload_date, PostMultimedia postMultimedia, User user) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.upload_date = upload_date;
+		this.postMultimedia = postMultimedia;
+		this.user = user;
+	}
+
+
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Post(int id, String title, String content, Date upload_date) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.upload_date = upload_date;
+	
+	
+	public PostMultimedia getPostMultimedia() {
+		return postMultimedia;
 	}
-	
-	
+
+
+	public void setPostMultimedia(PostMultimedia postMultimedia) {
+		this.postMultimedia = postMultimedia;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public int getId() {
 		return id;
 	}

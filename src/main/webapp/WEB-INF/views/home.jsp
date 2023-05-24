@@ -41,6 +41,17 @@
 
 	<main class="offset-lg-3 col-lg-6">
 		<div class="body-nav">Explore</div>
+		
+			<!-- Write blog -->
+		<%
+			if(loggedUser != null){
+			%>
+				<%@include file="partials/writeBlog.jsp"%>
+			<%				
+			}
+		%>
+		
+
 
 		<div class="all-contents">
 			<div class="content-box">

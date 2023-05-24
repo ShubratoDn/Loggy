@@ -96,3 +96,33 @@ nav{
     text-decoration-line: none;
     border-radius: 10px;
 }
+
+
+.write-post-btn{
+	margin: 10px;
+	border:1px solid #d9caca;
+	padding: 10px;
+	background: #e8f4fd;
+	border-radius: 10px;
+	backdrop-filter: blur(10px); 
+}
+
+.write-post-btn img{
+	height: 40px;
+	width: 40px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.write-post-btn span{
+	padding: 10px 40px;
+	margin-left:20px;
+	background: transparent;
+	border-radius: 20px;
+	transition: all 0.5s;
+	font-weight: bold;
+}
+
+.write-post-btn span:hover{
+	background: #e1e2f1;
+}

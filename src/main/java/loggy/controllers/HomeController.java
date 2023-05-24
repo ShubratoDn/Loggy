@@ -25,8 +25,8 @@ public class HomeController {
 
 	
 	@GetMapping("/profile/")
-	public String homxe() {
-		return "";
+	public String profile() {
+		return "profile";
 	}
 	
 	

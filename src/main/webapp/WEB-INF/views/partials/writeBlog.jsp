@@ -1,9 +1,16 @@
 
 		<!-- Write the blog Starts -->
-		<%@page import="loggy.helpers.ServerMessage"%>
-<div class="w-100">
-			<div type="button" data-toggle="modal" data-target="#exampleModal">
-				Write a blog
+		<%@page import="loggy.entities.User"%>
+<%@page import="loggy.helpers.ServerMessage"%>
+		
+		
+		<%
+			User x =  (User) session.getAttribute("user");
+		%>
+		
+		<div class="w-100">
+			<div class="write-post-btn" type="button" data-toggle="modal" data-target="#exampleModal">
+				<img alt=""  src="resources/image/userImages/<%=x.getImage()%>"> <span>Let's log something?</span>
 			</div>
 		</div>
 		<!-- Modal -->

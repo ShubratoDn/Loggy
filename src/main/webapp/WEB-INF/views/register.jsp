@@ -15,7 +15,7 @@
 	class="d-flex  justify-content-center align-items-center">
 
 	<main class="login-page w-100">
-		<form action="register" method="post"
+		<form action="register" method="post" enctype="multipart/form-data"
 			class="col-lg-5 border m-auto py-4">
 			
 			<h2 class="text-center">Register to Loggy </h2>
@@ -50,7 +50,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="img">Your image:</label> <input type="file" name="image"
+				<label for="img">Your image:</label> <input type="file" name="user_image"
 					class="form-control" placeholder="Enter password" id="img">
 			</div>
 			<button type="submit" class="btn w-100 btn-primary">Register

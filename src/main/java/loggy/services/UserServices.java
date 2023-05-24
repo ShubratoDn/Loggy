@@ -4,8 +4,8 @@ import java.util.List;
 
 import loggy.entities.User;
 
-public interface UserServices {
-
+public interface UserServices {	
+	
 	List<String> userValidation(User user);
 	
 	int addUser(User user);

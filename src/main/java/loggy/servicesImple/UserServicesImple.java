@@ -50,7 +50,7 @@ public class UserServicesImple implements UserServices {
 		List<String> error = new ArrayList<String>();
 		
 		//name validation
-		if(user.getName().isBlank()) {
+		if(user.getName().isBlank() || user.getName() == null) {
 			error.add("Please Enter the name");			
 		}else {
 			if(user.getName().length() < 3) {

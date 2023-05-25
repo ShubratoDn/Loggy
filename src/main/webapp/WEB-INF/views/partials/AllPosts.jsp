@@ -1,5 +1,6 @@
 			
-			<%@page import="java.util.concurrent.TimeUnit"%>
+			<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.concurrent.TimeUnit"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
 <%@page import="loggy.entities.Post"%>
@@ -9,16 +10,16 @@
 				for(Post post: allPosts){	
 					
 					// Get the current time
-					  Date currentTime = new Date();
+					  Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
 					  // Assuming yourDate is the Date object you want to display
-					  Date yourDate = post.getUpload_date(); // Provide your Date object here
+					  Timestamp yourDate = post.getUpload_date(); // Provide your Date object here
 
 					  // Calculate the time difference in milliseconds
 					  long timeDiffInMillis = currentTime.getTime() - yourDate.getTime();
 						
 					  // Calculate the time difference in minutes, hours, and days
-					  long minutesDiff = timeDiffInMillis / 1000;
+					  long minutesDiff = TimeUnit.MILLISECONDS.toMinutes(timeDiffInMillis);
 					  long hoursDiff = TimeUnit.MILLISECONDS.toHours(timeDiffInMillis);
 					  long daysDiff = TimeUnit.MILLISECONDS.toDays(timeDiffInMillis);
 
@@ -32,7 +33,7 @@
 					    timeAgo = daysDiff + " day ago";
 					  }
 					
-					  System.out.print(yourDate+ "    \n");
+					  System.out.print(timeAgo+ "    \n");
 					  // Format the original date as desired
 // 					  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 // 					  String formattedDate = formatter.format(yourDate);

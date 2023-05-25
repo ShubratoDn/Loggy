@@ -1,17 +1,16 @@
 package loggy.entities;
 
-import java.util.Date;
-
+import java.sql.Timestamp;
 public class Post {
 	
 	private int id;
 	private String title;
 	private String content;
-	private Date upload_date;
+	private Timestamp upload_date;
 	private PostMultimedia postMultimedia;
 	private User user;
 	
-	public Post(int id, String title, String content, Date upload_date, PostMultimedia postMultimedia, User user) {
+	public Post(int id, String title, String content, Timestamp upload_date, PostMultimedia postMultimedia, User user) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -68,10 +67,10 @@ public class Post {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getUpload_date() {
+	public Timestamp getUpload_date() {
 		return upload_date;
 	}
-	public void setUpload_date(Date upload_date) {
+	public void setUpload_date(Timestamp upload_date) {
 		this.upload_date = upload_date;
 	}
 

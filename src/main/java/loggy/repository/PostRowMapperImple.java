@@ -23,7 +23,7 @@ public class PostRowMapperImple implements RowMapper<Post>{
 		
 		post.setTitle(rs.getString("title"));
 		post.setContent(rs.getString("content"));
-		post.setUpload_date(rs.getDate("upload_date"));
+		post.setUpload_date(rs.getTimestamp("upload_date"));
 		
 		return post;
 	}

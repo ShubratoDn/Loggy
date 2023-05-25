@@ -1,5 +1,6 @@
 package loggy.controllers;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,8 +49,10 @@ public class HomeController {
 		
 		for(Post post : allPosts) {
 			System.out.println("Post title is : "+post.getTitle());
-			System.out.println(post.getUser().getName());
-			System.out.println(post.getPostMultimedia());
+//			System.out.println(post.getUser().getName());
+//			System.out.println(post.getPostMultimedia());
+			Date upload_date = post.getUpload_date();
+			System.out.println(upload_date);
 		}
 		
 		model.addAttribute("allPosts",allPosts);		

@@ -1,11 +1,41 @@
 			
-			<%@page import="java.util.List"%>
+			<%@page import="java.util.concurrent.TimeUnit"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.List"%>
 <%@page import="loggy.entities.Post"%>
 			<%
 				 List<Post> allPosts = (List<Post>) request.getAttribute("allPosts");
 			
 				for(Post post: allPosts){	
 					
+					// Get the current time
+					  Date currentTime = new Date();
+
+					  // Assuming yourDate is the Date object you want to display
+					  Date yourDate = post.getUpload_date(); // Provide your Date object here
+
+					  // Calculate the time difference in milliseconds
+					  long timeDiffInMillis = currentTime.getTime() - yourDate.getTime();
+						
+					  // Calculate the time difference in minutes, hours, and days
+					  long minutesDiff = timeDiffInMillis / 1000;
+					  long hoursDiff = TimeUnit.MILLISECONDS.toHours(timeDiffInMillis);
+					  long daysDiff = TimeUnit.MILLISECONDS.toDays(timeDiffInMillis);
+
+					  // Choose the appropriate time unit to display
+					  String timeAgo;
+					  if (minutesDiff < 60) {
+					    timeAgo = minutesDiff + " min ago";
+					  } else if (hoursDiff < 24) {
+					    timeAgo = hoursDiff + " hour ago";
+					  } else {
+					    timeAgo = daysDiff + " day ago";
+					  }
+					
+					  System.out.print(yourDate+ "    \n");
+					  // Format the original date as desired
+// 					  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+// 					  String formattedDate = formatter.format(yourDate);
 				
 					
 			%>
@@ -20,7 +50,7 @@
 						<!-- user info -->
 						<div class="">
 							<span class="font-weight-bold pl-3"><%=post.getUser().getName() %></span> <br>
-							<span class="text-muted pl-3">5:10 pm &nbsp; 31 May, 2020</span>
+							<span class="text-muted pl-3"><%=timeAgo %></span>
 						</div>
 					</div>
 				</a>
@@ -28,9 +58,7 @@
 				<div class="content-text my-3">
 					<h4><%=post.getTitle() %></h4>
 					<p><%=post.getContent() %></p>
-				</div>
-				
-				
+				</div>				
 				
 				<%
 					if(post.getPostMultimedia() != null){										

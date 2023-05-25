@@ -41,6 +41,12 @@ public class PostMultimedia {
 	public void setPath(String path) {
 		this.path = path;
 	}
+	@Override
+	public String toString() {
+		return "PostMultimedia [id=" + id + ", post_id=" + post_id + ", media_type=" + media_type + ", path=" + path
+				+ "]";
+	}
+	
 	
 	
 	

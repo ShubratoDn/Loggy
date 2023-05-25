@@ -35,14 +35,29 @@
 				<%
 					if(post.getPostMultimedia() != null){										
 						String media_type = post.getPostMultimedia().getMedia_type();
-						String media_path = post.getPostMultimedia().getPath();
+						String media_path = post.getPostMultimedia().getPath();		
+
 				%>	
 				
-				<h1>${media_type }</h1>
 				
 				<!-- content-multimedia -->
 				<div class="content-multimedia">
-					<img class="card-img" src="resources/image/img1.jpg" alt="POST">
+					<h1><%=media_type %></h1>
+					<%
+						if(media_type.equals("video")){
+							%>
+								<video class="card-img" controls>
+								  <source src="resources/post_files/<%=media_path %>" type="video/mp4">
+								  You browser does not support this video
+								</video>
+								
+							<%
+						}else{
+							%>
+								<img class="card-img" src="resources/post_files/<%=media_path %>" alt="POST">						
+							<% 
+						}
+					%>
 				</div>
 				<%
 					} 

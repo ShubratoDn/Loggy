@@ -66,6 +66,23 @@
 	    <constructor-arg ref="postRepo" />
 	</bean>
 
+
+
+
+	 <!-- Define the PostMultimedia bean -->
+    <bean class="loggy.repository.PostMultimediaRepo" name="postMultimediaRepo">
+        <constructor-arg ref="jdbcTemplate" />
+    </bean>
+    <!-- UserServices bean definition -->
+	<bean id="postMultimediaServices" class="loggy.servicesImple.PostMultimediaServicesImple">
+	    <!-- Inject the UserRepo bean -->
+	    <constructor-arg ref="postMultimediaRepo" />
+	</bean>
+
+
+
+
+
 	<!-- Database Configuration -->
 
 	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>

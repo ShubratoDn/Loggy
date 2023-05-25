@@ -41,6 +41,7 @@ public class PostServicesImple implements PostServices{
 	}
 	
 	
+	//add Post
 	public int addPost(Post post, int userId) {
 		int addPost = this.postRepo.addPost(post, userId);
 		return addPost;
@@ -53,6 +54,11 @@ public class PostServicesImple implements PostServices{
 
 
 
+	
+	public List<Post> getAllPosts(){
+		List<Post> allPosts = this.postRepo.getAllPosts();
+		return allPosts;
+	}
 
 
 

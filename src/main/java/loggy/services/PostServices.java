@@ -10,4 +10,6 @@ public interface PostServices {
 	
 	int addPost(Post post, int userId);
 	int addPostMultimedia(Post post, int userId, String fileType, String filePath);
+	
+	List<Post> getAllPosts();
 }

@@ -71,8 +71,11 @@ nav{
     padding: 10px;
     border: 1px solid rgba(169, 211, 160, 0.829);
     margin: 20px 10px;
-    border-radius: 10px;
-    
+    border-radius: 10px;    
+}
+
+.content-box a:hover{
+	text-decoration: none;
 }
 
 .content-interaction{
@@ -125,4 +128,34 @@ nav{
 
 .write-post-btn span:hover{
 	background: #e1e2f1;
+}
+
+
+
+
+/* PROFILE PAGE DESIGN */
+.profile-container img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.profile-container{
+    padding: 0 10px;
+    margin: 20px 0;
+    width: 99%;
+    border-radius: 10px;
+}
+
+.user-blogs-container .content-box{
+    margin: auto 0;
+}
+
+.user-blogs-container .content-interaction button {
+    padding: 5px;
+}
+.user-blogs-container .content-interaction a {
+    padding: 5px;
+    line-height: 10px;
 }

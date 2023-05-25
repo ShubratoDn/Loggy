@@ -15,9 +15,12 @@ public class PostRowMapperImple implements RowMapper<Post>{
 		
 		Post post = new Post();
 		User user = new User();
+		
 		post.setId(rs.getInt("id"));
+		
 		user.setId(rs.getInt("user_id"));
 		post.setUser(user);
+		
 		post.setTitle(rs.getString("title"));
 		post.setContent(rs.getString("content"));
 		post.setUpload_date(rs.getDate("upload_date"));

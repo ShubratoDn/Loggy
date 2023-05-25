@@ -54,75 +54,7 @@
 
 
 		<div class="all-contents">
-			<div class="content-box">
-				<div class="content-header-info d-flex align-items-center">
-					<!-- user image -->
-					<img class="content-owner-image p-1" src="resources/image/user.jpg"
-						alt="user">
-
-					<!-- user info -->
-					<div class="">
-						<span class="font-weight-bold pl-3">Shubrato Debnath.</span> <br>
-						<span class="text-muted pl-3">5:10 pm &nbsp; 31 May, 2020</span>
-					</div>
-				</div>
-				<!-- content text -->
-				<div class="content-text my-3">
-					<h4>Serenity at Dusk: A Golden Sea's Gentle Embrace</h4>
-					<p>The sun sets, casting a golden hue upon the tranquil sea, as
-						waves gently lap against the shore in a soothing rhythm.The sun
-						sets, casting a golden hue upon the tranquil sea, as waves gently
-						lap against the shore in a soothing rhythm.</p>
-				</div>
-				<!-- content-multimedia -->
-				<div class="content-multimedia">
-					<img class="card-img" src="resources/image/img1.jpg" alt="POST">
-				</div>
-				<!-- content interaction -->
-				<div class="content-interaction">
-					<button>
-						<i class="fa-regular fa-heart p-1"></i> Love
-					</button>
-					<a href=""><i class="fa-sharp fa-regular fa-comment p-1"></i>
-						Comment</a>
-					<button>Share</button>
-				</div>
-			</div>
-			<div class="content-box">
-				<div class="content-header-info d-flex align-items-center">
-					<!-- user image -->
-					<img class="content-owner-image p-1" src="resources/image/user.jpg"
-						alt="user">
-
-					<!-- user info -->
-					<div class="">
-						<span class="font-weight-bold pl-3">Shubrato Debnath.</span> <br>
-						<span class="text-muted pl-3">5:10 pm &nbsp; 31 May, 2020</span>
-					</div>
-				</div>
-				<!-- content text -->
-				<div class="content-text my-3">Lorem ipsum dolor sit amet
-					consectetur adipisicing elit. Obcaecati illo consequatur quis
-					quibusdam. Suscipit quasi blanditiis fugiat nam nostrum! Suscipit
-					dicta quae autem adipisci repellendus natus dolor delectus
-					consectetur beatae facilis culpa, illo quidem quis quas aperiam
-					eligendi? Beatae minus ducimus ullam maiores nisi odit eveniet,
-					totam velit blanditiis nostrum?</div>
-				<!-- content-multimedia -->
-				<div class="content-multimedia">
-					<img class="card-img" src="resources/image/img1.jpg" alt="POST">
-				</div>
-				<!-- content interaction -->
-				<div class="content-interaction">
-					<button>
-						<i class="fa-regular fa-heart p-1"></i> Love
-					</button>
-					<a href=""><i class="fa-sharp fa-regular fa-comment p-1"></i>
-						Comment</a>
-					<button>Share</button>
-				</div>
-			</div>
-
+			<%@include file="partials/AllPosts.jsp" %>
 		</div>
 
 		</div>
